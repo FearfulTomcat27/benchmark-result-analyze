@@ -11,7 +11,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--batch", type=int, required=True, help="Batch size")
 
     parser.add_argument(
-        "--benchmark", type=str, required=True, help="Benchmark, humaneval or multiple"
+        "--benchmark", type=str, required=True, help="Benchmark, humaneval or multiple1"
     )
 
     parser.add_argument("--input", type=str, required=True, help="Input file of folder")

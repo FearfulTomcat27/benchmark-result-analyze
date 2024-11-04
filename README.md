@@ -7,5 +7,5 @@
 # --benchmark 指定BenchMark
 # --input 指定输入文件/文件夹
 # --output 指定输出文件，可选
-python main.py --batch [batch_size] --benchmark [humaneval/multiple] --input [目标文件/文件夹] --ouput [输出文件]
+python analyze.py --batch [batch_size] --benchmark [humaneval/multiple1] --input [目标文件/文件夹] --ouput [输出文件]
 ```
