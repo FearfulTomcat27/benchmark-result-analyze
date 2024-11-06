@@ -81,7 +81,7 @@ class ME(Eval):
                     )
                     filtered_code = self.extractor(origin_code, problem["name"])
                     completions.append(filtered_code)
-                    self.record_origin_extracted(
+                    self.diff.append(
                         dict(
                             task_id=problem["name"],
                             origin=origin_code,
@@ -101,6 +101,8 @@ class ME(Eval):
                 )
                 self.logger.info("Processing task: {}", problem["name"])
                 fp.write((json.dumps(task) + "\n").encode("utf-8"))
+
+        self.record_origin_extracted()
 
     def process_mermaid(self):
         for problem in tqdm(self.problems):
@@ -120,7 +122,7 @@ class ME(Eval):
                     )
                     filtered_code = self.extractor(origin_code, problem["name"])
                     completions.append(filtered_code)
-                    self.record_origin_extracted(
+                    self.diff.append(
                         dict(
                             task_id=problem["name"],
                             origin=origin_code,
@@ -141,3 +143,5 @@ class ME(Eval):
                 )
                 self.logger.info("Processing task: {}", problem["name"])
                 fp.write((json.dumps(task) + "\n").encode("utf-8"))
+
+        self.record_origin_extracted()

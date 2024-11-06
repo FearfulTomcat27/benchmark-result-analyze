@@ -66,8 +66,8 @@ def parse_args():
     parser.add_argument(
         "--output-folder",
         type=str,
-        default="samples.jsonl",
-        help="The output file name, jsonl required",
+        default="tutorial",
+        help="The output folder path",
     )
     args = parser.parse_args()
     validate_args(args)

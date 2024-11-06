@@ -16,11 +16,10 @@ def generate_completion_baseline(client, problem, language, model, temperature, 
         },
         {
             "role": "user",
-            "content": f"Write code in {language} that meets the problem following. Ensure that the code you generate is "
-            "accurate and valid and does not come with test cases. Answer me only the body of the function."
-            "Remember, do not need to explain the code you wrote.",
+            "content": f"""Below is an instruction that describes a task. Write a response that appropriately 
+            completes the request. \n\n### Instruction: Complete the following {language} code without any tests or 
+            explanation\n{problem["prompt"]}\n\n### Response:""",
         },
-        {"role": "user", "content": problem["prompt"]},
     ]
     return __generate_completion__(client, messages, model, temperature, top_p)
 
@@ -35,11 +34,9 @@ def generate_completion_mermaid(
         },
         {
             "role": "user",
-            "content": f"Help me complete the {language} code for the following question and I will give the flowchart syntax "
-            "for the following problem. Ensure that the complementary code is accurate, valid, and formatted "
-            "correctly, and do not need to generate test cases. Remember, do not need to explain the code you wrote.",
+            "content": f"""Below is a mermaid syntax and an instruction that describes a task. Write a response that 
+            appropriately completes the request.\n\n### Mermaid:\n{mermaid["mermaid"]}\n### Instruction:\nComplete 
+            the following {language} code without any tests or explanation\n{problem["prompt"]}\n\n### Response:""",
         },
-        {"role": "user", "content": problem["prompt"]},
-        {"role": "user", "content": mermaid["mermaid"]},
     ]
     return __generate_completion__(client, messages, model, temperature, top_p)

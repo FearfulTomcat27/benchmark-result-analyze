@@ -17,6 +17,7 @@ class HE(Eval):
         mermaid_file,
         temperature,
         top_p,
+        max_tokens,
         k,
         output_folder,
     ):
@@ -29,6 +30,7 @@ class HE(Eval):
             mermaid_file,
             temperature,
             top_p,
+            max_tokens,
             k,
             output_folder,
         )
@@ -51,7 +53,7 @@ class HE(Eval):
                         origin_code,
                         self.problems[task_id]["entry_point"],
                     )
-                    self.record_origin_extracted(
+                    self.diff.append(
                         dict(
                             task_id=task_id,
                             origin=origin_code,
@@ -65,6 +67,8 @@ class HE(Eval):
                     )
                     self.logger.info("Processing task: {}", task_id)
                     fp.write((json.dumps(task) + "\n").encode("utf-8"))
+
+        self.record_origin_extracted()
 
     def process_mermaid(self):
         with open(os.path.join(self.output_folder, "samples.jsonl"), "wb") as fp:
@@ -83,7 +87,7 @@ class HE(Eval):
                         origin_code,
                         self.problems[task_id]["entry_point"],
                     )
-                    self.record_origin_extracted(
+                    self.diff.append(
                         dict(
                             task_id=task_id,
                             origin=origin_code,
@@ -96,3 +100,5 @@ class HE(Eval):
                     )
                     self.logger.info("Processing task: {}", task_id)
                     fp.write((json.dumps(task) + "\n").encode("utf-8"))
+
+        self.record_origin_extracted()

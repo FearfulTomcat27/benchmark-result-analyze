@@ -50,6 +50,7 @@ class Eval(object):
         self.logger = get_logger()
         self.extractor = get_extractor(self.language)
         self.time = time.time_ns()
+        self.diff = []
         os.makedirs(self.output_folder, exist_ok=True)
 
     def process_baseline(self):
@@ -58,11 +59,11 @@ class Eval(object):
     def process_mermaid(self):
         pass
 
-    def record_origin_extracted(self, data):
+    def record_origin_extracted(self):
         with open(
-            os.path.join(self.output_folder, f"diff_{self.time}.jsonl"), "ab"
+            os.path.join(self.output_folder, f"diff_{self.time}.json"), "w"
         ) as fp:
-            fp.write((json.dumps(data) + "\n").encode("utf-8"))
+            fp.write(json.dumps(self.diff))
 
     def evaluate(self):
         if self.mermaid_optimize:
