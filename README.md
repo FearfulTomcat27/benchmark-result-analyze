@@ -11,7 +11,6 @@ python benchmark.py \
 --output-folder tutorial 
 ```
 
-
 ## 生成结果
 
 | 参数名              | 类型   | 值                         | 描述                         |
@@ -50,9 +49,9 @@ python analyze.py \
 --output-dir output
 ```
 
-| 参数名        | 类型  | 默认值    | 描述                                            |
-|------------|-----|--------|-----------------------------------------------|
-| batch      | int | 1      | 每个问题生成结果数                                     |
-| benchmark  | str | 无      | multiple / humaneval                          |
-| input      | str | 无      | 输入文件，如果是 humaneval 则是 jsonl 文件，multiple 则是文件夹 |
-| output-dir | str | output | 结果保存目录                                        |
+| 参数名        | 类型  | 默认值    | 描述                                             |
+|------------|-----|--------|------------------------------------------------|
+| batch      | int | 1      | 每个问题生成结果数                                      |
+| benchmark  | str | 无      | MultiPL-E / HumanEval                          |
+| input      | str | 无      | 输入文件，如果是 HumanEval 则是 jsonl 文件，MultiPL-E 则是文件夹 |
+| output-dir | str | output | 结果保存目录                                         |
