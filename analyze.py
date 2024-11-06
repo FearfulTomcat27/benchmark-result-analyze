@@ -11,7 +11,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--batch", type=int, required=True, help="Batch size")
 
     parser.add_argument(
-        "--benchmark", type=str, required=True, help="Benchmark, humaneval or multiple"
+        "--benchmark", type=str, required=True, help="Benchmark, HumanEval or MultiPL-E"
     )
 
     parser.add_argument("--input", type=str, required=True, help="Input file of folder")
@@ -29,10 +29,10 @@ def valid_args(args):
     assert args.batch > 0, "Batch size should be greater than 0"
 
     assert (
-        args.benchmark == "humaneval" or args.benchmark == "multiple"
-    ), "Benchmark should be humaneval or multiple"
+        args.benchmark == "HumanEval" or args.benchmark == "MultiPL-E"
+    ), "Benchmark should be HumanEval or MultiPL-E"
 
-    if args.benchmark == "humaneval":
+    if args.benchmark == "HumanEval":
         assert args.input.endswith(".jsonl") or args.input.endswith(
             ".jsonl_results.jsonl"
         ), "Input file should be a jsonl file"
@@ -48,7 +48,7 @@ def main():
 
     result = (
         HumanEval(args.batch, args.input, args.output_dir)
-        if args.benchmark == "humaneval"
+        if args.benchmark == "HumanEval"
         else MultiPLE(args.batch, args.input, args.output_dir)
     )
 

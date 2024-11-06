@@ -60,7 +60,7 @@ class MultiPLE(Result):
                     fail += 1
                     failed.append(
                         {
-                            "completion": task["program"],
+                            "generate": task["program"],
                             "result": task["stderr"],
                         }
                     )
